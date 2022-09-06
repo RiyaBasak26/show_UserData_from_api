@@ -1,4 +1,6 @@
 const url = " https://reqres.in/api/users?page=1";
+const modal=document.getElementById("modal");
+const body= document.getElementsByTagName("body");
 
 async function getValue(api) {
   try {
@@ -34,13 +36,28 @@ function showUserData(resp) {
 }
 function userModal(i)
 {
+    modal.style.display="flex";
     console.log("dsfdsgd",i);
-    let userDetail=`<div><div> <img src="${i.avatar}" alt=""></div>
-            <label>Email:</label>
+    let userDetail=`<div id="modalContent"><div> <img src="${i.avatar}" alt=""></div>
+           <div class="label"> <label>Email:</label>
             <span>${i.email}</span>
-            <label>First Name:</label>
-            <span>${i.first_name}</span>
-            <label>Last Name:</label>
-            <span>${i.last_name}</span>  </div>`
-            document.getElementById("modal").innerHTML=userDetail;
+            </div>
+            <div class="label">
+            <label> Name:</label>
+            <span>${i.first_name}  ${i.last_name}</span>
+            </div>
+            <span class="material-symbols-outlined close" onclick="closeModal()" >
+            close
+            </span>
+             </div>`
+             modal.innerHTML=userDetail;
+}
+function closeModal()
+{
+    modal.style.display="none";
+}
+body.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
 }
