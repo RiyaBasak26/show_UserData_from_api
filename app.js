@@ -26,9 +26,21 @@ function showUserData(resp) {
     tRow += `<td>${i.email}</td>`;
     tRow += `<td>${i.first_name}</td>`;
     tRow += `<td>${i.last_name}</td>`;
-    tRow+=`<td><button>show User Detail</button></td>`
+    tRow+=`<td><button onclick=userModal(${JSON.stringify(i)})>show User Detail</button></td>`
     tRow +="</tr>";
   }
   document.getElementById("userTable").innerHTML = tRow;
  
+}
+function userModal(i)
+{
+    console.log("dsfdsgd",i);
+    let userDetail=`<div><div> <img src="${i.avatar}" alt=""></div>
+            <label>Email:</label>
+            <span>${i.email}</span>
+            <label>First Name:</label>
+            <span>${i.first_name}</span>
+            <label>Last Name:</label>
+            <span>${i.last_name}</span>  </div>`
+            document.getElementById("modal").innerHTML=userDetail;
 }
