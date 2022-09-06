@@ -28,7 +28,7 @@ function showUserData(resp) {
     tRow += `<td>${i.email}</td>`;
     tRow += `<td>${i.first_name}</td>`;
     tRow += `<td>${i.last_name}</td>`;
-    tRow+=`<td><button onclick=userModal(${JSON.stringify(i)})>show User Detail</button></td>`
+    tRow+=`<td><button class="show-detail" onclick=userModal(${JSON.stringify(i)})>show User Detail</button></td>`
     tRow +="</tr>";
   }
   document.getElementById("userTable").innerHTML = tRow;
@@ -46,9 +46,9 @@ function userModal(i)
             <label> Name:</label>
             <span>${i.first_name}  ${i.last_name}</span>
             </div>
-            <span class="material-symbols-outlined close" onclick="closeModal()" >
+            <button class="close" onclick="closeModal()" >
             close
-            </span>
+            </button>
              </div>`
              modal.innerHTML=userDetail;
 }
